@@ -12,10 +12,23 @@ with Hellbox("specimen") as task:
     task.read("build/*.ttf") >> DrawBot("specimen.py") >> task.write("build/specimen")
 ```
 
-The DrawBot script is executed with `fontName` bound to the installed font and can call any DrawBot drawing functions. By default the output is saved as a PDF; pass `format="png"` (or any format DrawBot supports) to change it.
+All fonts from the previous chute are installed before the script runs, available as the `fontNames` list. The script is responsible for calling `saveImage` — any files saved during execution are passed to the next chute.
+
+**specimen.py**
 
 ```python
-DrawBot("specimen.py", format="png")
+W, H = 800, 600
+
+newPage(W, H)
+fill(1)
+rect(0, 0, W, H)
+fill(0)
+
+for i, name in enumerate(fontNames):
+    font(name, 48)
+    text("Round", (40, H - 100 - i * 80))
+
+saveImage("specimen.pdf")
 ```
 
 ## Installation
