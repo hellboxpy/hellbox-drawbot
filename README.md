@@ -34,5 +34,12 @@ saveImage("specimen.pdf")
 ## Installation
 
 ```sh
-pip install hellbox-drawbot
+hell add hellbox-drawbot
+```
+
+## Development
+
+```sh
+uv sync
+uv run pytest
 ```
