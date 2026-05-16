@@ -1,0 +1,14 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    uses: hellboxpy/gh-actions/.github/workflows/lint.yml@main
+
+  test:
+    uses: hellboxpy/gh-actions/.github/workflows/test.yml@main
