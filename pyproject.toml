@@ -31,6 +31,9 @@ Homepage = "https://github.com/hellboxpy/hellbox-drawbot"
 [tool.uv.sources]
 drawbot = { git = "https://github.com/typemytype/drawbot" }
 
+[dependency-groups]
+dev = ["mdformat"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 namespaces = true
