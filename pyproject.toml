@@ -10,7 +10,10 @@ readme = "README.md"
 license = {text = "MIT"}
 authors = [{name = "Jack Jennings", email = "jack@standard-library.com"}]
 requires-python = ">=3.11"
-dependencies = ["hellbox", "drawbot"]
+dependencies = [
+    "hellbox",
+    "drawbot",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Plugins",
@@ -28,11 +31,22 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/hellboxpy/hellbox-drawbot"
 
+
+[[tool.ty.overrides]]
+include = ["tests/**"]
+
+[tool.ty.overrides.rules]
+unresolved-import = "ignore"
 [tool.uv.sources]
 drawbot = { git = "https://github.com/typemytype/drawbot" }
+hellbox = { git = "https://github.com/hellboxpy/hellbox.git" }
 
 [dependency-groups]
-dev = ["mdformat"]
+dev = [
+    "mdformat",
+    "ruff>=0,<1",
+    "ty>=0.0.36",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
